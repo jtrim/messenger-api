@@ -270,4 +270,41 @@ RSpec.resource 'Messages' do
       end
     end
   end
+
+  put '/api/v1/messages/:id' do
+    let(:id) { message.id }
+    let(:message) { create(:message) }
+
+    context 'When marking a message as read' do
+      parameter :attributes, type: :hash, items: { read_at: :datetime }
+      let(:read_at) { Time.now.change(usec: 0) }
+
+      let(:raw_post) do
+        {
+          attributes: {
+            read_at: read_at
+          }
+        }.to_json
+      end
+
+      example "Updating a message's \"read\" status" do
+        expect { do_request }.to change { message.reload.read_at }.from(nil).to(read_at)
+
+        expect(status).to eq 200
+        expect(response_json[:messages]).to match [
+                                              a_hash_including(id: message.id,
+                                                               content: message.content,
+                                                               sender: a_hash_including(
+                                                                 id: message.sender.id,
+                                                                 username: message.sender.username,
+                                                                 email: message.sender.email),
+                                                               recipient: a_hash_including(
+                                                                 id: message.recipient.id,
+                                                                 username: message.recipient.username,
+                                                                 email: message.recipient.email),
+                                                               sent_at: message.sent_at.as_json,
+                                                               read_at: message.read_at.as_json)]
+      end
+    end
+  end
 end

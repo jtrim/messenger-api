@@ -26,7 +26,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"0418b825-1e76-46d3-96bf-a3e03f92d3c8\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"944be73f-30b2-4324-ba6e-68b538434d21\",\n        \"username\": \"user5\",\n        \"email\": \"user5@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"03c0013c-e9e7-4921-8321-3e5fff0154db\",\n        \"username\": \"user6\",\n        \"email\": \"user6@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T22:55:00.869-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"147af0ee-119e-4f43-a06c-843e6891c431\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"19a17dfe-2a42-45e7-90d3-44a2d28aaf1c\",\n        \"username\": \"user3\",\n        \"email\": \"user3@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"5653f45e-e854-404e-8da0-f241dd226b43\",\n        \"username\": \"user4\",\n        \"email\": \"user4@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T22:55:00.858-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"83d32f5a-4a29-4dd5-84b9-1e8e4c0f3b5e\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"66e3415d-ef70-4403-8f44-ee8dfff0b7bd\",\n        \"username\": \"user1\",\n        \"email\": \"user1@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"6b036e3e-4ad6-417e-b3d9-f7cac1890bec\",\n        \"username\": \"user2\",\n        \"email\": \"user2@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T22:55:00.854-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"52ab7bb7-2d51-445e-b9bb-5901f882466d\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"bd19aa0d-b9a2-4541-8e7d-5305f67df63b\",\n        \"username\": \"user5\",\n        \"email\": \"user5@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"48946de8-9ea0-4e57-9b61-323301ffc1ca\",\n        \"username\": \"user6\",\n        \"email\": \"user6@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T23:09:39.876-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"292abe9f-24c5-4762-a68c-e843fa96af91\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"fc2dc921-06bb-4be3-9683-a4e75dde4f79\",\n        \"username\": \"user3\",\n        \"email\": \"user3@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"413893cb-5159-4683-89ba-0ce3abcf51ba\",\n        \"username\": \"user4\",\n        \"email\": \"user4@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T23:09:39.863-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"3f6054d8-3cd7-4025-acf4-4e3d6ef20ba4\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"eb41835f-4786-4b53-ab27-b104b8ee3837\",\n        \"username\": \"user1\",\n        \"email\": \"user1@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"623d4501-e4bb-4534-aa82-961d61121f49\",\n        \"username\": \"user2\",\n        \"email\": \"user2@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T23:09:39.847-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -35,10 +35,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"e2589ef202b1cd545f4f0fcb311736a5\"",
+        "ETag": "W/\"cb101cb61df93dcd1f4dc9082e04e5fb\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "25f13eca-d0d3-498f-839d-b72ba9b73595",
-        "X-Runtime": "0.032920",
+        "X-Request-Id": "53e2ca4a-d887-418d-b5f2-45e6913d1f87",
+        "X-Runtime": "0.017360",
         "Content-Length": "1028"
       },
       "response_content_type": "application/json; charset=utf-8",

@@ -14,7 +14,7 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
-    ok, message = MessageService::Create.call(message_attributes)
+    ok, message = MessageService::Create.call(message_create_attributes)
 
     if ok
       serializer = Api::V1::MessageSerializer.new(message)
@@ -25,10 +25,26 @@ class Api::V1::MessagesController < ApplicationController
     end
   end
 
+  def update
+    message = Message.find(params[:id])
+
+    if message.update(message_update_attributes)
+      serializer = Api::V1::MessageSerializer.new(message)
+      render json: serializer, status: :ok
+    else
+      serializer = Api::V1::UnprocessableEntitySerializer.new(message)
+      render json: serializer, status: :unprocessable_entity
+    end
+  end
+
   private
 
-  def message_attributes
-    params[:attributes].permit(:content, :recipient_id, :sender_id, :sent_at, :sender_username, :recipient_username)
+  def message_create_attributes
+    params.require(:attributes).permit(:content, :recipient_id, :sender_id, :sent_at, :sender_username, :recipient_username)
+  end
+
+  def message_update_attributes
+    params.require(:attributes).permit(:read_at)
   end
 
   def sender_id_filter

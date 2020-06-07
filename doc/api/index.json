@@ -52,6 +52,13 @@
           "groups": "all",
           "route": "/api/v1/messages",
           "method": "post"
+        },
+        {
+          "description": "Updating a message's \"read\" status",
+          "link": "messages/updating_a_message's_\"read\"_status.json",
+          "groups": "all",
+          "route": "/api/v1/messages/:id",
+          "method": "put"
         }
       ]
     }
