@@ -15,6 +15,8 @@ gem 'apitome', '~> 0.3'
 
 group :development, :test do
   gem 'pry-byebug'
+  gem 'rspec_api_documentation', '~> 6.1.0'
+  gem 'factory_bot_rails', '~> 5.2.0'
 end
 
 group :development do
@@ -27,4 +29,5 @@ end
 group :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'capybara', '>= 2.15'
+  gem 'timecop', '~> 0.9'
 end
