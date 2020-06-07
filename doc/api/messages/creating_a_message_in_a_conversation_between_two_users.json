@@ -1,0 +1,58 @@
+{
+  "resource": "Messages",
+  "resource_explanation": "Messages resource",
+  "http_method": "POST",
+  "route": "/api/v1/messages",
+  "description": "Creating a message in a conversation between two users",
+  "explanation": null,
+  "parameters": [
+    {
+      "type": "hash",
+      "items": {
+        "sender_id": "string",
+        "recipient_id": "string",
+        "content": "string",
+        "sent_at": "datetime"
+      },
+      "name": "attributes",
+      "description": " attributes"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/messages",
+      "request_body": "{\"attributes\":{\"sender_id\":\"34f876ad-c1aa-41dd-9aeb-69639802ba5e\",\"recipient_id\":\"a74efe4f-8229-4c3b-b2a2-9abbbb307fe8\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-06T22:10:48.403-06:00\"}}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"28ff3749-0f59-41b9-b39a-6e9cd2834fee\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"34f876ad-c1aa-41dd-9aeb-69639802ba5e\",\n        \"username\": \"user235\",\n        \"email\": \"user235@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"a74efe4f-8229-4c3b-b2a2-9abbbb307fe8\",\n        \"username\": \"user236\",\n        \"email\": \"user236@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T22:10:48.403-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"a61b9da9e5daf9d59ed5408902ec670f\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "f590793f-0085-47c0-8713-16c48dc8439f",
+        "X-Runtime": "0.009459",
+        "Content-Length": "383"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

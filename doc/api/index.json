@@ -31,6 +31,20 @@
           "groups": "all",
           "route": "/api/v1/messages",
           "method": "get"
+        },
+        {
+          "description": "Creating a message in a conversation between two users",
+          "link": "messages/creating_a_message_in_a_conversation_between_two_users.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "post"
+        },
+        {
+          "description": "- Attempting to create a message with invalid attributes",
+          "link": "messages/-_attempting_to_create_a_message_with_invalid_attributes.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "post"
         }
       ]
     }

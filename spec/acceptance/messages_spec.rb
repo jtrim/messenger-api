@@ -18,13 +18,11 @@ RSpec.resource 'Messages' do
                                                     sender: a_hash_including(
                                                       id: message_three.sender.id,
                                                       username: message_three.sender.username,
-                                                      email: message_three.sender.email
-                                                    ),
+                                                      email: message_three.sender.email),
                                                     recipient: a_hash_including(
                                                       id: message_three.recipient.id,
                                                       username: message_three.recipient.username,
-                                                      email: message_three.recipient.email
-                                                    ),
+                                                      email: message_three.recipient.email),
                                                     sent_at: message_three.sent_at.as_json,
                                                     read_at: message_three.read_at.as_json),
                                    a_hash_including(id: message_two.id),
@@ -131,6 +129,72 @@ RSpec.resource 'Messages' do
           expect(response_json[:messages].size).to eq 1
           expect(response_json[:messages].first).to match a_hash_including(id: message.id)
         end
+      end
+    end
+  end
+
+  post '/api/v1/messages' do
+    parameter :attributes, type: :hash, items: { sender_id: :string, recipient_id: :string, content: :string, sent_at: :datetime }
+
+    let(:sender) { create(:user) }
+    let(:recipient) { create(:user) }
+
+    let(:raw_post) do
+      {
+        attributes: {
+          sender_id: sender.id,
+          recipient_id: recipient.id,
+          content: 'An example message between two friends',
+          sent_at: Time.now
+        }
+      }.to_json
+    end
+
+    example 'Creating a message in a conversation between two users' do
+      expect { do_request }.to change { Message.count }.by(1)
+
+      message = Message.last
+
+      expect(status).to eq 201
+      expect(response_json[:messages]).to match [
+                                            a_hash_including(id: message.id,
+                                                             content: message.content,
+                                                             sender: a_hash_including(
+                                                               id: message.sender.id,
+                                                               username: message.sender.username,
+                                                               email: message.sender.email),
+                                                             recipient: a_hash_including(
+                                                               id: message.recipient.id,
+                                                               username: message.recipient.username,
+                                                               email: message.recipient.email),
+                                                             sent_at: message.sent_at.as_json,
+                                                             read_at: message.read_at.as_json)]
+
+    end
+
+    context 'with invalid attributes' do
+      let(:raw_post) do
+        # No content or sent_at
+        {
+          attributes: {
+            sender_id: sender.id,
+            recipient_id: recipient.id
+          }
+        }.to_json
+      end
+
+      example '- Attempting to create a message with invalid attributes' do
+        expect { do_request }.not_to change { Message.count }
+
+        expect(status).to eq 422
+        expect(response_json).to match a_hash_including(
+                                         errors: {
+                                           messages: ["Sent at can't be blank", "Content can't be blank"],
+                                           attributes: {
+                                             sent_at: "can't be blank",
+                                             content: "can't be blank"
+                                           }
+                                         })
       end
     end
   end

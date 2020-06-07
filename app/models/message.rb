@@ -6,4 +6,6 @@ class Message < ApplicationRecord
   scope :before_date_cutoff, ->(days: 30) { where('sent_at >= ?', Time.now - days.days) }
   scope :sent_by_id, ->(user_id) { where(sender_id: user_id) }
   scope :sent_to_id, ->(user_id) { where(recipient_id: user_id) }
+
+  validates :sent_at, :sender, :recipient, :content, presence: :true
 end

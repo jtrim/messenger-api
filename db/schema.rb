@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_234007) do
   create_table "contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "owner_id", null: false
     t.uuid "user_id", null: false
-    t.boolean "active"
+    t.boolean "active", default: true, null: false
     t.datetime "active_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

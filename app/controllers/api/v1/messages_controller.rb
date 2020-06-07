@@ -1,8 +1,8 @@
 class Api::V1::MessagesController < ApplicationController
   def index
     scope = Message
-    scope = scope.sent_by_id(sender_id) if filtering_by_sender?
-    scope = scope.sent_to_id(recipient_id) if filtering_by_recipient?
+    scope = scope.sent_by_id(sender_id_filter) if filtering_by_sender?
+    scope = scope.sent_to_id(recipient_id_filter) if filtering_by_recipient?
 
     messages = scope.most_recent_first
                  .before_date_cutoff
@@ -13,13 +13,28 @@ class Api::V1::MessagesController < ApplicationController
     render json: serializer
   end
 
+  def create
+    message = Message.new(message_attributes)
+    if message.save
+      serializer = Api::V1::MessageSerializer.new(message)
+      render json: serializer, status: :created
+    else
+      serializer = Api::V1::UnprocessableEntitySerializer.new(message)
+      render json: serializer, status: :unprocessable_entity
+    end
+  end
+
   private
 
-  def sender_id
+  def message_attributes
+    params[:attributes].permit(:content, :recipient_id, :sender_id, :sent_at)
+  end
+
+  def sender_id_filter
     filters[:sender_id]
   end
 
-  def recipient_id
+  def recipient_id_filter
     filters[:recipient_id]
   end
 
@@ -28,10 +43,10 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def filtering_by_sender?
-    sender_id.present?
+    sender_id_filter.present?
   end
 
   def filtering_by_recipient?
-    recipient_id.present?
+    recipient_id_filter.present?
   end
 end

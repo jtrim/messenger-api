@@ -1,0 +1,57 @@
+{
+  "resource": "Messages",
+  "resource_explanation": "Messages resource",
+  "http_method": "POST",
+  "route": "/api/v1/messages",
+  "description": "- Attempting to create a message with invalid attributes",
+  "explanation": null,
+  "parameters": [
+    {
+      "type": "hash",
+      "items": {
+        "sender_id": "string",
+        "recipient_id": "string",
+        "content": "string",
+        "sent_at": "datetime"
+      },
+      "name": "attributes",
+      "description": " attributes"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/messages",
+      "request_body": "{\"attributes\":{\"sender_id\":\"aed2299e-156d-4b4a-bddf-03688bfb7d6a\",\"recipient_id\":\"70f738f5-7544-470c-93fc-bff166d346f0\"}}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 422,
+      "response_status_text": "Unprocessable Entity",
+      "response_body": "{\n  \"errors\": {\n    \"messages\": [\n      \"Sent at can't be blank\",\n      \"Content can't be blank\"\n    ],\n    \"attributes\": {\n      \"sent_at\": \"can't be blank\",\n      \"content\": \"can't be blank\"\n    }\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "dc3f39d0-1460-450c-bdef-f3d501e7965a",
+        "X-Runtime": "0.024972",
+        "Content-Length": "144"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}
