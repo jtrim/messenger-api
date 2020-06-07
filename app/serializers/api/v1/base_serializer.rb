@@ -1,7 +1,7 @@
 class Api::V1::BaseSerializer
   def self.resource_name(val = nil)
     @resource_name = val if val.present?
-    val
+    @resource_name
   end
 
   def self.attributes(*attrs)
