@@ -7,9 +7,9 @@
   "explanation": null,
   "parameters": [
     {
-      "type": "array",
+      "type": "array[uuid]",
       "name": "filters[between_user_ids]",
-      "description": "Two user ids"
+      "description": "Two user IDs"
     }
   ],
   "response_fields": [
@@ -47,8 +47,8 @@
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "acff7251-feed-4f88-92a5-1c38ae0347b0",
-        "X-Runtime": "0.004461",
+        "X-Request-Id": "4f9a5894-856c-4828-a4ee-e8856e59359c",
+        "X-Runtime": "0.005909",
         "Content-Length": "146"
       },
       "response_content_type": "application/json; charset=utf-8",

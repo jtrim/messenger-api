@@ -7,12 +7,9 @@
   "explanation": "        A message can be updated with a `read_at` value to indicate the recipient of the message has seen it.\n",
   "parameters": [
     {
-      "type": "hash",
-      "items": {
-        "read_at": "datetime"
-      },
-      "name": "attributes",
-      "description": " attributes"
+      "type": "datetime",
+      "name": "attributes[read_at]",
+      "description": "A client generated ISO8601 timestamp representing the time at which the message was read by the recipient"
     }
   ],
   "response_fields": [
@@ -21,8 +18,8 @@
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/messages/74830a59-4eda-4eb4-bf48-fc89eb65041b",
-      "request_body": "{\"attributes\":{\"read_at\":\"2020-06-07T01:58:50.000-06:00\"}}",
+      "request_path": "/api/v1/messages/13b78d47-d8c4-4b4c-8a17-f72984c3dfbc",
+      "request_body": "{\"attributes\":{\"read_at\":\"2020-06-07T06:58:05.000-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -33,7 +30,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"74830a59-4eda-4eb4-bf48-fc89eb65041b\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"792d506d-4ea8-4cab-ae83-a1ffeb84734c\",\n        \"username\": \"user251\",\n        \"email\": \"user253@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"3b46e4b1-e819-4535-a69f-78e87f0617b6\",\n        \"username\": \"user252\",\n        \"email\": \"user254@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T01:58:50.148-06:00\",\n      \"read_at\": \"2020-06-07T01:58:50.000-06:00\"\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"13b78d47-d8c4-4b4c-8a17-f72984c3dfbc\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"ccc5193f-0ed9-468c-8fd9-0a422b5ba7eb\",\n        \"username\": \"user251\",\n        \"email\": \"user253@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"c90ca523-7e42-49a3-bc0c-e6957f700302\",\n        \"username\": \"user252\",\n        \"email\": \"user254@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T06:58:05.514-06:00\",\n      \"read_at\": \"2020-06-07T06:58:05.000-06:00\"\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -42,10 +39,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"1f514b005b830220c8f9dbaace6a312c\"",
+        "ETag": "W/\"a940b759428a6875d01aa0dfa25ba29f\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "985495e7-16cd-4548-af4f-3318f604db0d",
-        "X-Runtime": "0.021484",
+        "X-Request-Id": "2341efaa-ed32-42b1-81ff-5b399c7da02e",
+        "X-Runtime": "0.024532",
         "Content-Length": "387"
       },
       "response_content_type": "application/json; charset=utf-8",

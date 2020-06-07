@@ -7,15 +7,24 @@
   "explanation": "        In cases where the user IDs are not known (such as initiating a chat), the system will automatically create a\n        user by a given username if it doesn't already exist. If a user *does* already exist by the given username, the\n        existing user record will be used.\n",
   "parameters": [
     {
-      "type": "hash",
-      "items": {
-        "sender_username": "string",
-        "recipient_username": "string",
-        "content": "string",
-        "sent_at": "datetime"
-      },
-      "name": "attributes",
-      "description": " attributes"
+      "type": "string",
+      "name": "attributes[sender_username]",
+      "description": "The username of the sending user"
+    },
+    {
+      "type": "string",
+      "name": "attributes[recipient_username]",
+      "description": "The username of the receiving user"
+    },
+    {
+      "type": "string",
+      "name": "attributes[content]",
+      "description": "Content of the message"
+    },
+    {
+      "type": "datetime",
+      "name": "attributes[sent_at]",
+      "description": "A client-generated ISO-8601 timestamp representing the time the message was sent"
     }
   ],
   "response_fields": [
@@ -25,7 +34,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_username\":\"by-tor\",\"recipient_username\":\"the_snow_dog\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T01:58:49.974-06:00\"}}",
+      "request_body": "{\"attributes\":{\"sender_username\":\"by-tor\",\"recipient_username\":\"the_snow_dog\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T06:58:05.384-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,7 +45,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"e8fd2d9a-dde9-4dd4-b332-8b594fa0b737\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"0314d915-707d-497f-a3ae-aeb4db152266\",\n        \"username\": \"by-tor\",\n        \"email\": null\n      },\n      \"recipient\": {\n        \"id\": \"f396359a-1138-4b89-9ccf-a8086f84f9b3\",\n        \"username\": \"the_snow_dog\",\n        \"email\": null\n      },\n      \"sent_at\": \"2020-06-07T01:58:49.974-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"df4858f5-4b91-4926-ab4e-07b74375c364\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"b1b83d67-548d-44e8-9fca-8e1c1c6a1e65\",\n        \"username\": \"by-tor\",\n        \"email\": null\n      },\n      \"recipient\": {\n        \"id\": \"1df15fc6-a988-4dff-8a93-a6ae5c5c30aa\",\n        \"username\": \"the_snow_dog\",\n        \"email\": null\n      },\n      \"sent_at\": \"2020-06-07T06:58:05.384-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -45,10 +54,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"f3083400795bce6aad0f75c3d73d3755\"",
+        "ETag": "W/\"04b0ffbb9b3ec654cfedc2356fee05db\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "f79ea8a7-1dbf-4ae7-8941-2917ea19dd3c",
-        "X-Runtime": "0.009839",
+        "X-Request-Id": "380e407f-3f5b-4fc6-b173-c950a0a51982",
+        "X-Runtime": "0.025708",
         "Content-Length": "353"
       },
       "response_content_type": "application/json; charset=utf-8",

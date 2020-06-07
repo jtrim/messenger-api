@@ -7,15 +7,24 @@
   "explanation": "        When creating messages, it's important to note that the client is responsible for supplying the `sent_at` value.\n",
   "parameters": [
     {
-      "type": "hash",
-      "items": {
-        "sender_id": "string",
-        "recipient_id": "string",
-        "content": "string",
-        "sent_at": "datetime"
-      },
-      "name": "attributes",
-      "description": " attributes"
+      "type": "uuid",
+      "name": "attributes[sender_id]",
+      "description": "ID of the sender of the message"
+    },
+    {
+      "type": "uuid",
+      "name": "attributes[recipient_id]",
+      "description": "ID of the recipient of the message"
+    },
+    {
+      "type": "string",
+      "name": "attributes[content]",
+      "description": "Content of the message"
+    },
+    {
+      "type": "datetime",
+      "name": "attributes[sent_at]",
+      "description": "A client-generated ISO-8601 timestamp representing the time the message was sent"
     }
   ],
   "response_fields": [
@@ -25,7 +34,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_id\":\"a9672803-a33e-444e-bc37-adfcd16a06e9\",\"recipient_id\":\"3d032f96-0e87-41f4-92d4-a51eabc3522e\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T01:58:49.950-06:00\"}}",
+      "request_body": "{\"attributes\":{\"sender_id\":\"f1ad18c2-6b61-4d3f-bec5-f3bb17a21b31\",\"recipient_id\":\"1246fb01-9580-4584-ad40-a80c9f860a14\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T06:58:05.353-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,7 +45,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"612992a8-7c96-4589-a0ae-40fd71b3b632\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"a9672803-a33e-444e-bc37-adfcd16a06e9\",\n        \"username\": \"user247\",\n        \"email\": \"user247@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"3d032f96-0e87-41f4-92d4-a51eabc3522e\",\n        \"username\": \"user248\",\n        \"email\": \"user248@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T01:58:49.950-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"ba9fcf85-5597-406e-a5e2-d2d1b2cacd29\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"f1ad18c2-6b61-4d3f-bec5-f3bb17a21b31\",\n        \"username\": \"user247\",\n        \"email\": \"user247@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"1246fb01-9580-4584-ad40-a80c9f860a14\",\n        \"username\": \"user248\",\n        \"email\": \"user248@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T06:58:05.353-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -45,10 +54,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"1398f1baa66ba67581acad9512005f24\"",
+        "ETag": "W/\"e0e2b99c0094485fdfbb5d24d09fd2a4\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "f0efc9d2-14f2-4656-91f7-4812c2690265",
-        "X-Runtime": "0.016225",
+        "X-Request-Id": "0290138e-72e6-4571-95fd-705d036003fe",
+        "X-Runtime": "0.011537",
         "Content-Length": "383"
       },
       "response_content_type": "application/json; charset=utf-8",

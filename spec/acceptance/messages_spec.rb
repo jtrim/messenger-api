@@ -67,7 +67,7 @@ RSpec.resource 'Messages' do
     end
 
     context 'When requesting messages for a specific sender' do
-      parameter :filters, type: :hash, items: { sender_id: :string }
+      parameter 'filters[sender_id]', 'ID of the sending user to query messages from', type: :uuid
       let(:sender) { create(:user) }
 
       example 'Listing messages for a specific sender' do
@@ -88,7 +88,7 @@ RSpec.resource 'Messages' do
     end
 
     context 'When requesting messages for a specific recipient' do
-      parameter :filters, type: :hash, items: { recipient_id: :string }
+      parameter 'filters[recipient_id]', 'ID of the receiving user to query messages to', type: :uuid
       let(:recipient) { create(:user) }
 
       example 'Listing messages for a specific recipient' do
@@ -108,7 +108,9 @@ RSpec.resource 'Messages' do
     end
 
     context 'When requesting messages between a sender and a recipient' do
-      parameter :filters, type: :hash, items: { sender_id: :string, recipient_id: :string }
+      parameter 'filters[sender_id]', 'ID of the sending user to query messages from', type: :uuid
+      parameter 'filters[recipient_id]', 'ID of the receiving user to query messages to', type: :uuid
+
       let(:recipient) { create(:user) }
       let(:sender) { create(:user) }
 
@@ -154,7 +156,7 @@ RSpec.resource 'Messages' do
     end
 
     context 'When requesting messages for a conversation between two users by username' do
-      parameter('filters[between_usernames]', 'Two usernames', { type: :array })
+      parameter 'filters[between_usernames]', 'Two usernames', { type: 'array[string]' }
       let(:user1) { create(:user) }
       let(:user2) { create(:user) }
 
@@ -192,7 +194,7 @@ RSpec.resource 'Messages' do
     end
 
     context 'When requesting messages for a conversation between two users by user ids' do
-      parameter('filters[between_user_ids]', 'Two user ids', { type: :array })
+      parameter('filters[between_user_ids]', 'Two user IDs', { type: 'array[uuid]' })
       let(:user1) { create(:user) }
       let(:user2) { create(:user) }
 
@@ -246,7 +248,10 @@ RSpec.resource 'Messages' do
     end
 
     context 'When the user ids are known' do
-      parameter :attributes, type: :hash, items: { sender_id: :string, recipient_id: :string, content: :string, sent_at: :datetime }
+      parameter 'attributes[sender_id]', 'ID of the sender of the message', type: :uuid
+      parameter 'attributes[recipient_id]', 'ID of the recipient of the message', type: :uuid
+      parameter 'attributes[content]', 'Content of the message', type: :string
+      parameter 'attributes[sent_at]', 'A client-generated ISO-8601 timestamp representing the time the message was sent', type: :datetime
 
       example 'Creating a message in a conversation between two users' do
         explanation <<-MARKDOWN
@@ -276,7 +281,10 @@ RSpec.resource 'Messages' do
     end
 
     context 'When the user ids are not known' do
-      parameter :attributes, type: :hash, items: { sender_username: :string, recipient_username: :string, content: :string, sent_at: :datetime }
+      parameter 'attributes[sender_username]', 'The username of the sending user', type: :string
+      parameter 'attributes[recipient_username]', 'The username of the receiving user', type: :string
+      parameter 'attributes[content]', 'Content of the message', type: :string
+      parameter 'attributes[sent_at]', 'A client-generated ISO-8601 timestamp representing the time the message was sent', type: :datetime
 
       let(:raw_post) do
         {
@@ -386,7 +394,8 @@ RSpec.resource 'Messages' do
     let(:message) { create(:message) }
 
     context 'When marking a message as read' do
-      parameter :attributes, type: :hash, items: { read_at: :datetime }
+      parameter 'attributes[read_at]', 'A client generated ISO8601 timestamp representing the time at which the message was read by the recipient', type: :datetime
+
       let(:read_at) { Time.now.change(usec: 0) }
 
       let(:raw_post) do

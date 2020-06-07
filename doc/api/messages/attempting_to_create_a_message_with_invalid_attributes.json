@@ -15,7 +15,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_id\":\"259ff853-4628-4077-bc45-e2daa398f350\",\"recipient_id\":\"16986945-e8fb-44c0-9ee8-f1697aab6e24\"}}",
+      "request_body": "{\"attributes\":{\"sender_id\":\"ee3818c2-0ab7-483f-99d9-6a627febf9a7\",\"recipient_id\":\"102f914f-053f-4ff1-86a7-5c4e42c79a4b\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,8 +36,8 @@
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "dd809e0d-3033-4505-bd02-ba472fe0127a",
-        "X-Runtime": "0.042041",
+        "X-Request-Id": "0774519e-8c51-4ece-9996-4d518cb982c8",
+        "X-Runtime": "0.013893",
         "Content-Length": "144"
       },
       "response_content_type": "application/json; charset=utf-8",

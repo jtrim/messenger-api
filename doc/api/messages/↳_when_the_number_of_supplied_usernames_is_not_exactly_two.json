@@ -7,7 +7,7 @@
   "explanation": null,
   "parameters": [
     {
-      "type": "array",
+      "type": "array[string]",
       "name": "filters[between_usernames]",
       "description": "Two usernames"
     }
@@ -47,8 +47,8 @@
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "a5d3713a-52cb-48fe-b49f-cd94e0060d5c",
-        "X-Runtime": "0.004934",
+        "X-Request-Id": "d4762e23-d2ff-40dd-bd5b-8354fb8118fb",
+        "X-Runtime": "0.007103",
         "Content-Length": "148"
       },
       "response_content_type": "application/json; charset=utf-8",
