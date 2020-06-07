@@ -25,7 +25,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_id\":\"4bc9bda3-21bc-4427-8641-309d6ab97c5b\",\"recipient_id\":\"b11add5f-28be-4b11-a128-23ca248a53d9\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T00:34:45.546-06:00\"}}",
+      "request_body": "{\"attributes\":{\"sender_id\":\"1da27643-1319-43c3-b9b7-0dc19a2337b2\",\"recipient_id\":\"278efec9-9d6e-4eb1-8bb6-789aced54cea\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T01:29:07.988-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,7 +36,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"09ec9ac5-8eb2-4d97-8b94-ec4a0446dd1a\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"4bc9bda3-21bc-4427-8641-309d6ab97c5b\",\n        \"username\": \"user235\",\n        \"email\": \"user235@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"b11add5f-28be-4b11-a128-23ca248a53d9\",\n        \"username\": \"user236\",\n        \"email\": \"user236@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T00:34:45.546-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"5bf3ffb9-ce59-46c6-8bec-cf96ed9fa4c5\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"1da27643-1319-43c3-b9b7-0dc19a2337b2\",\n        \"username\": \"user247\",\n        \"email\": \"user247@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"278efec9-9d6e-4eb1-8bb6-789aced54cea\",\n        \"username\": \"user248\",\n        \"email\": \"user248@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T01:29:07.988-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -45,10 +45,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"3082029cd72607cb3a6467ce2ba7025d\"",
+        "ETag": "W/\"1a377b59a134b5e950aead2359fc8175\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "25b9e4e5-c8e0-42f1-8c56-c12f57fd268d",
-        "X-Runtime": "0.017663",
+        "X-Request-Id": "a3352620-be25-446f-a83a-edd281bab730",
+        "X-Runtime": "0.016505",
         "Content-Length": "383"
       },
       "response_content_type": "application/json; charset=utf-8",

@@ -1,8 +1,17 @@
 class Api::V1::MessagesController < ApplicationController
   def index
-    scope = Message
-    scope = scope.sent_by_id(sender_id_filter) if filtering_by_sender?
-    scope = scope.sent_to_id(recipient_id_filter) if filtering_by_recipient?
+    scope = Message.all
+
+    if user_ids = between_user_ids_filter
+      return unless assert_pair user_ids, :between_user_ids
+      scope = scope.between_user_ids(user_ids)
+    elsif usernames = between_usernames_filter
+      return unless assert_pair usernames, :between_usernames
+      scope = scope.between_usernames(usernames)
+    else
+      scope = scope.sent_by_id(sender_id_filter) if filtering_by_sender?
+      scope = scope.sent_to_id(recipient_id_filter) if filtering_by_recipient?
+    end
 
     messages = scope.most_recent_first
                  .before_date_cutoff
@@ -38,6 +47,23 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   private
+
+  def assert_pair(vals, key)
+    return true if vals.size == 2
+
+    serializer = Api::V1::UnprocessableEntitySerializer.with_errors(key => "must contain exactly two values")
+    render json: serializer, status: :unprocessable_entity
+
+    false
+  end
+
+  def between_user_ids_filter
+    filters[:between_user_ids]
+  end
+
+  def between_usernames_filter
+    filters[:between_usernames]
+  end
 
   def message_create_attributes
     params.require(:attributes).permit(:content, :recipient_id, :sender_id, :sent_at, :sender_username, :recipient_username)

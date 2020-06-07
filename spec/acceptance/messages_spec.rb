@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.resource 'Messages' do
@@ -42,7 +43,7 @@ RSpec.resource 'Messages' do
 
     end
 
-    example '- Limits messages to 100', document: false do
+    example '↳ Limits messages to 100', document: false do
       messages = create_list(:message, 101)
 
       do_request
@@ -52,7 +53,7 @@ RSpec.resource 'Messages' do
       expect(response_json[:messages]).not_to include(a_hash_including(id: messages.first.id))
     end
 
-    example '- Limits messages to those created in the last 30 days', document: false do
+    example '↳ Limits messages to those created in the last 30 days', document: false do
       Timecop.freeze do
         message = create(:message, sent_at: 30.days.ago)
         create(:message, sent_at: 30.days.ago - 1.second)
@@ -106,12 +107,12 @@ RSpec.resource 'Messages' do
       end
     end
 
-    context 'When requesting messages for a specific conversation' do
+    context 'When requesting messages between a sender and a recipient' do
       parameter :filters, type: :hash, items: { sender_id: :string, recipient_id: :string }
       let(:recipient) { create(:user) }
       let(:sender) { create(:user) }
 
-      example 'Listing messages for a specific conversation' do
+      example 'Listing messages between an sender and a recipient' do
         explanation <<-MARKDOWN
         The **Messages** API can be used to list messages between a sender and a recipient.
         MARKDOWN
@@ -128,7 +129,7 @@ RSpec.resource 'Messages' do
         expect(response_json[:messages].size).to eq 3
       end
 
-      example '- Limits messages to 100', document: false do
+      example '↳ Limits messages to 100', document: false do
         messages = create_list(:message, 101, recipient: recipient, sender: sender)
 
         do_request(filters: { recipient_id: recipient.id, sender_id: sender.id })
@@ -138,7 +139,7 @@ RSpec.resource 'Messages' do
         expect(response_json[:messages]).not_to include a_hash_including(id: messages.first.id)
       end
 
-      example '- Limits messages to the last 30 days', document: false do
+      example '↳ Limits messages to the last 30 days', document: false do
         Timecop.freeze do
           message = create(:message, recipient: recipient, sender: sender, sent_at: 30.days.ago)
           create(:message, recipient: recipient, sender: sender, sent_at: 30.days.ago - 1.second)
@@ -149,6 +150,82 @@ RSpec.resource 'Messages' do
           expect(response_json[:messages].size).to eq 1
           expect(response_json[:messages].first).to match a_hash_including(id: message.id)
         end
+      end
+    end
+
+    context 'When requesting messages for a conversation between two users by username' do
+      parameter('filters[between_usernames]', 'Two usernames', { type: :array })
+      let(:user1) { create(:user) }
+      let(:user2) { create(:user) }
+
+      example 'Listing messages for a specific conversation between users by username' do
+        explanation <<-MARKDOWN
+        The **Messages** API can be used to list messages between two usernames.
+        MARKDOWN
+        other_sender = create(:user)
+
+        create_list(:message, 3, recipient: user1, sender: user2)
+        create_list(:message, 3, recipient: user2, sender: user1)
+        create(:message, sender: user1)
+        create(:message, recipient: user2)
+        create(:message, sender: other_sender)
+
+        do_request(filters: { between_usernames: [user1.username, user2.username] })
+
+        expect(status).to eq 200
+        expect(response_json[:messages].size).to eq 6
+      end
+
+      example '↳ When the request is malformed' do
+        do_request(filters: { between_usernames: ['foo', 'bar', 'baz'] })
+        expect(status).to eq 422
+        expect(response_json).to match(
+                                   a_hash_including(
+                                     errors: a_hash_including(
+                                       attributes: {
+                                         between_usernames: ['must contain exactly two values']
+                                       }
+                                     )
+                                   )
+                                 )
+      end
+    end
+
+    context 'When requesting messages for a conversation between two users by user ids' do
+      parameter('filters[between_user_ids]', 'Two user ids', { type: :array })
+      let(:user1) { create(:user) }
+      let(:user2) { create(:user) }
+
+      example 'Listing messages for a specific conversation between users by user ids' do
+        explanation <<-MARKDOWN
+        The **Messages** API can be used to list messages between two users when given two user ids.
+        MARKDOWN
+        other_sender = create(:user)
+
+        create_list(:message, 3, recipient: user1, sender: user2)
+        create_list(:message, 3, recipient: user2, sender: user1)
+        create(:message, sender: user1)
+        create(:message, recipient: user2)
+        create(:message, sender: other_sender)
+
+        do_request(filters: { between_user_ids: [user1.id, user2.id] })
+
+        expect(status).to eq 200
+        expect(response_json[:messages].size).to eq 6
+      end
+
+      example '↳ When the request is malformed' do
+        do_request(filters: { between_user_ids: [1, 2, 3] })
+        expect(status).to eq 422
+        expect(response_json).to match(
+                                   a_hash_including(
+                                     errors: a_hash_including(
+                                       attributes: {
+                                         between_user_ids: ['must contain exactly two values']
+                                       }
+                                     )
+                                   )
+                                 )
       end
     end
   end
@@ -245,7 +322,7 @@ RSpec.resource 'Messages' do
       end
 
       context 'When users already exist by the given usernames' do
-        specify '- It finds existing users', document: false do
+        specify '↳ It finds existing users', document: false do
           by_tor = create(:user, username: 'by-tor')
           the_snow_dog = create(:user, username: 'the_snow_dog')
 

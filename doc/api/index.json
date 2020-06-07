@@ -26,8 +26,36 @@
           "method": "get"
         },
         {
-          "description": "Listing messages for a specific conversation",
-          "link": "messages/listing_messages_for_a_specific_conversation.json",
+          "description": "Listing messages between an sender and a recipient",
+          "link": "messages/listing_messages_between_an_sender_and_a_recipient.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        },
+        {
+          "description": "Listing messages for a specific conversation between users by username",
+          "link": "messages/listing_messages_for_a_specific_conversation_between_users_by_username.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        },
+        {
+          "description": "↳ When the request is malformed",
+          "link": "messages/↳_when_the_request_is_malformed.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        },
+        {
+          "description": "Listing messages for a specific conversation between users by user ids",
+          "link": "messages/listing_messages_for_a_specific_conversation_between_users_by_user_ids.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        },
+        {
+          "description": "↳ When the request is malformed",
+          "link": "messages/↳_when_the_request_is_malformed.json",
           "groups": "all",
           "route": "/api/v1/messages",
           "method": "get"
