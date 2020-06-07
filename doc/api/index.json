@@ -1,0 +1,38 @@
+{
+  "resources": [
+    {
+      "name": "Messages",
+      "explanation": "Messages resource",
+      "examples": [
+        {
+          "description": "Listing messages for all users",
+          "link": "messages/listing_messages_for_all_users.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        },
+        {
+          "description": "Listing messages for a specific sender",
+          "link": "messages/listing_messages_for_a_specific_sender.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        },
+        {
+          "description": "Listing messages for a specific recipient",
+          "link": "messages/listing_messages_for_a_specific_recipient.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        },
+        {
+          "description": "Listing messages for a specific conversation",
+          "link": "messages/listing_messages_for_a_specific_conversation.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}
