@@ -1,10 +1,10 @@
 {
   "resource": "Messages",
-  "resource_explanation": "Messages resource",
+  "resource_explanation": "  The **Messages** resource is the primary endpoint for this application. It provides for listing messages, creating new\n  messages, and updating existing messages.\n",
   "http_method": "POST",
   "route": "/api/v1/messages",
   "description": "Creating a message between two usernames",
-  "explanation": null,
+  "explanation": "        In cases where the user IDs are not known (such as initiating a chat), the system will automatically create a\n        user by a given username if it doesn't already exist. If a user *does* already exist by the given username, the\n        existing user record will be used.\n",
   "parameters": [
     {
       "type": "hash",
@@ -25,7 +25,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_username\":\"by-tor\",\"recipient_username\":\"the_snow_dog\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-06T23:09:41.253-06:00\"}}",
+      "request_body": "{\"attributes\":{\"sender_username\":\"by-tor\",\"recipient_username\":\"the_snow_dog\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T00:34:45.572-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,7 +36,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"0e437cb1-19c1-4827-97a8-f764cf6fdbac\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"6e71f761-f0d8-4054-a4ce-654c9fc942ac\",\n        \"username\": \"by-tor\",\n        \"email\": null\n      },\n      \"recipient\": {\n        \"id\": \"5f5e6b20-22b6-49bf-8239-ae38264b4e0b\",\n        \"username\": \"the_snow_dog\",\n        \"email\": null\n      },\n      \"sent_at\": \"2020-06-06T23:09:41.253-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"cf1c7870-ba16-4288-b071-b481d32d0c06\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"5386d317-9a30-4304-b497-ceb5989511db\",\n        \"username\": \"by-tor\",\n        \"email\": null\n      },\n      \"recipient\": {\n        \"id\": \"7ca9a2b2-dc7b-4102-847b-7044c23519e1\",\n        \"username\": \"the_snow_dog\",\n        \"email\": null\n      },\n      \"sent_at\": \"2020-06-07T00:34:45.572-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -45,10 +45,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"5c1d513ebc5570e7bf7657adbd00fafa\"",
+        "ETag": "W/\"09e77c3aec63e203715454c947860cc0\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "df4b1966-498a-4a94-abb7-d2d03a20871a",
-        "X-Runtime": "0.051347",
+        "X-Request-Id": "6621b48c-eec4-4333-b8af-48f1a37cd083",
+        "X-Runtime": "0.022130",
         "Content-Length": "353"
       },
       "response_content_type": "application/json; charset=utf-8",

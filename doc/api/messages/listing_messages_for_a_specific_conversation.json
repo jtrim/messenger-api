@@ -1,10 +1,10 @@
 {
   "resource": "Messages",
-  "resource_explanation": "Messages resource",
+  "resource_explanation": "  The **Messages** resource is the primary endpoint for this application. It provides for listing messages, creating new\n  messages, and updating existing messages.\n",
   "http_method": "GET",
   "route": "/api/v1/messages",
   "description": "Listing messages for a specific conversation",
-  "explanation": null,
+  "explanation": "        The **Messages** API can be used to list messages between a sender and a recipient.\n",
   "parameters": [
     {
       "type": "hash",
@@ -22,7 +22,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/messages?filters[recipient_id]=9469137c-ed2b-4b70-a531-5db0f497b992&filters[sender_id]=703e3628-8586-461b-a040-c0db53e009b4",
+      "request_path": "/api/v1/messages?filters[recipient_id]=682b5ed6-e3ce-4577-aabc-43e983cacc2b&filters[sender_id]=5b286877-c62a-4c2b-831a-262bf8c02852",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -31,14 +31,14 @@
       },
       "request_query_parameters": {
         "filters": {
-          "recipient_id": "9469137c-ed2b-4b70-a531-5db0f497b992",
-          "sender_id": "703e3628-8586-461b-a040-c0db53e009b4"
+          "recipient_id": "682b5ed6-e3ce-4577-aabc-43e983cacc2b",
+          "sender_id": "5b286877-c62a-4c2b-831a-262bf8c02852"
         }
       },
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"11389f67-c34b-4ca7-9566-740dc2c880e3\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"703e3628-8586-461b-a040-c0db53e009b4\",\n        \"username\": \"user227\",\n        \"email\": \"user227@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"9469137c-ed2b-4b70-a531-5db0f497b992\",\n        \"username\": \"user226\",\n        \"email\": \"user226@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T23:09:40.777-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"6f874c0b-f16d-42b4-af5c-a1bc991a42e7\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"703e3628-8586-461b-a040-c0db53e009b4\",\n        \"username\": \"user227\",\n        \"email\": \"user227@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"9469137c-ed2b-4b70-a531-5db0f497b992\",\n        \"username\": \"user226\",\n        \"email\": \"user226@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T23:09:40.774-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"8777d97c-c4f2-4147-9069-0e78027f0e10\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"703e3628-8586-461b-a040-c0db53e009b4\",\n        \"username\": \"user227\",\n        \"email\": \"user227@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"9469137c-ed2b-4b70-a531-5db0f497b992\",\n        \"username\": \"user226\",\n        \"email\": \"user226@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T23:09:40.772-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"4b4dd1a5-ff1c-4fa0-96a5-3d2b70d14dc1\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"5b286877-c62a-4c2b-831a-262bf8c02852\",\n        \"username\": \"user227\",\n        \"email\": \"user227@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"682b5ed6-e3ce-4577-aabc-43e983cacc2b\",\n        \"username\": \"user226\",\n        \"email\": \"user226@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T00:34:45.202-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"aaf19c7a-383a-49f2-8a81-007813e3d083\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"5b286877-c62a-4c2b-831a-262bf8c02852\",\n        \"username\": \"user227\",\n        \"email\": \"user227@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"682b5ed6-e3ce-4577-aabc-43e983cacc2b\",\n        \"username\": \"user226\",\n        \"email\": \"user226@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T00:34:45.200-06:00\",\n      \"read_at\": null\n    },\n    {\n      \"id\": \"33a43fbf-e960-4f93-aaa1-94c6aa2d90a4\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"5b286877-c62a-4c2b-831a-262bf8c02852\",\n        \"username\": \"user227\",\n        \"email\": \"user227@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"682b5ed6-e3ce-4577-aabc-43e983cacc2b\",\n        \"username\": \"user226\",\n        \"email\": \"user226@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T00:34:45.199-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -47,10 +47,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"9875c9b8b5084df84fe4694fcd3f0f00\"",
+        "ETag": "W/\"4cb412a8da3d3ccdfb2a76c5f10acf52\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "528e3f10-4c5b-496c-bb6e-e150924a8f17",
-        "X-Runtime": "0.033748",
+        "X-Request-Id": "f682cb19-bd6b-4bcb-892e-240e39fc3ae7",
+        "X-Runtime": "0.009418",
         "Content-Length": "1052"
       },
       "response_content_type": "application/json; charset=utf-8",

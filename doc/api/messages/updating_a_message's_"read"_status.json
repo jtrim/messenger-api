@@ -1,10 +1,10 @@
 {
   "resource": "Messages",
-  "resource_explanation": "Messages resource",
+  "resource_explanation": "  The **Messages** resource is the primary endpoint for this application. It provides for listing messages, creating new\n  messages, and updating existing messages.\n",
   "http_method": "PUT",
   "route": "/api/v1/messages/:id",
   "description": "Updating a message's \"read\" status",
-  "explanation": null,
+  "explanation": "        A message can be updated with a `read_at` value to indicate the recipient of the message has seen it.\n",
   "parameters": [
     {
       "type": "hash",
@@ -21,8 +21,8 @@
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/messages/a30af8e0-e16a-4d93-a881-9412bb39a200",
-      "request_body": "{\"attributes\":{\"read_at\":\"2020-06-06T23:09:41.000-06:00\"}}",
+      "request_path": "/api/v1/messages/b817054e-4ffc-45db-8ea1-ba2ce1e2e638",
+      "request_body": "{\"attributes\":{\"read_at\":\"2020-06-07T00:34:45.000-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -31,9 +31,9 @@
       "request_query_parameters": {
       },
       "request_content_type": "application/json",
-      "response_status": 201,
-      "response_status_text": "Created",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"a30af8e0-e16a-4d93-a881-9412bb39a200\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"458eafeb-4538-4083-81da-b960dcd50f97\",\n        \"username\": \"user239\",\n        \"email\": \"user241@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"5df2eca6-822e-4562-86e6-6e7b88bd45ab\",\n        \"username\": \"user240\",\n        \"email\": \"user242@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T23:09:41.401-06:00\",\n      \"read_at\": \"2020-06-06T23:09:41.000-06:00\"\n    }\n  ]\n}",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"b817054e-4ffc-45db-8ea1-ba2ce1e2e638\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"df7e1055-abe6-4340-8d93-63dfe8cbf7d8\",\n        \"username\": \"user239\",\n        \"email\": \"user241@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"02ac0a8c-87b6-48ca-9cd0-64c571645916\",\n        \"username\": \"user240\",\n        \"email\": \"user242@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T00:34:45.663-06:00\",\n      \"read_at\": \"2020-06-07T00:34:45.000-06:00\"\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -42,10 +42,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"015e006012a4902c85931dc9f7dda41c\"",
+        "ETag": "W/\"d66e6d3c9bea9480c71caaaec92f1fe8\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "6aaaa7e1-6487-45f9-9a07-ca2c291ee9dd",
-        "X-Runtime": "0.010877",
+        "X-Request-Id": "db66fc07-b922-43d3-ac57-19fc701fabc5",
+        "X-Runtime": "0.007940",
         "Content-Length": "387"
       },
       "response_content_type": "application/json; charset=utf-8",

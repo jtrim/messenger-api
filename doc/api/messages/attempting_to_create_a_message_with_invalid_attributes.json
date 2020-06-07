@@ -1,10 +1,10 @@
 {
   "resource": "Messages",
-  "resource_explanation": "Messages resource",
+  "resource_explanation": "  The **Messages** resource is the primary endpoint for this application. It provides for listing messages, creating new\n  messages, and updating existing messages.\n",
   "http_method": "POST",
   "route": "/api/v1/messages",
   "description": "Attempting to create a message with invalid attributes",
-  "explanation": null,
+  "explanation": "        The API will respond with error messages and an appropraite status code in the event that there is a problem with the incoming data.\n",
   "parameters": [
 
   ],
@@ -15,7 +15,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_id\":\"89dd40bf-d488-4568-9e6c-10b10b931b46\",\"recipient_id\":\"bad8cb8f-50f0-4b65-a815-578d2954f4ef\"}}",
+      "request_body": "{\"attributes\":{\"sender_id\":\"7532ed37-3ac6-4162-9a44-4a7b62114cfd\",\"recipient_id\":\"c64b9fe3-638a-4827-a21e-e2bb422d5592\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,8 +36,8 @@
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "97bfa12c-518e-4ded-9397-2d32a659ddd7",
-        "X-Runtime": "0.024660",
+        "X-Request-Id": "27866dcb-4935-4d49-bcc6-2a14a2b2ea6f",
+        "X-Runtime": "0.009473",
         "Content-Length": "144"
       },
       "response_content_type": "application/json; charset=utf-8",

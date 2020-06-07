@@ -1,11 +1,21 @@
 require 'rails_helper'
 
 RSpec.resource 'Messages' do
-  explanation 'Messages resource'
+  explanation <<-MARKDOWN
+  The **Messages** resource is the primary endpoint for this application. It provides for listing messages, creating new
+  messages, and updating existing messages.
+  MARKDOWN
+
   header 'Content-Type', 'application/json'
 
   get '/api/v1/messages' do
     example 'Listing messages for all users' do
+      explanation <<-MARKDOWN
+      The number of messages this endpoint will produce is limited to 100, and the API does not currently support pagination.
+
+      Only messages created within the last 30 days will be returned.
+      MARKDOWN
+
       message_one, message_two, message_three = create_list(:message, 3)
 
       do_request
@@ -60,6 +70,10 @@ RSpec.resource 'Messages' do
       let(:sender) { create(:user) }
 
       example 'Listing messages for a specific sender' do
+        explanation <<-MARKDOWN
+        The **Messages** API can be used to list messages sent by a specific user to any other user.
+        MARKDOWN
+
         other_sender = create(:user)
 
         create_list(:message, 3, sender: sender)
@@ -77,6 +91,9 @@ RSpec.resource 'Messages' do
       let(:recipient) { create(:user) }
 
       example 'Listing messages for a specific recipient' do
+        explanation <<-MARKDOWN
+        The **Messages** API can also be used to list messages sent received by a specific user from any other user.
+        MARKDOWN
         other_recipient = create(:user)
 
         create_list(:message, 3, recipient: recipient)
@@ -95,6 +112,9 @@ RSpec.resource 'Messages' do
       let(:sender) { create(:user) }
 
       example 'Listing messages for a specific conversation' do
+        explanation <<-MARKDOWN
+        The **Messages** API can be used to list messages between a sender and a recipient.
+        MARKDOWN
         other_sender = create(:user)
 
         create_list(:message, 3, recipient: recipient, sender: sender)
@@ -152,6 +172,10 @@ RSpec.resource 'Messages' do
       parameter :attributes, type: :hash, items: { sender_id: :string, recipient_id: :string, content: :string, sent_at: :datetime }
 
       example 'Creating a message in a conversation between two users' do
+        explanation <<-MARKDOWN
+        When creating messages, it's important to note that the client is responsible for supplying the `sent_at` value.
+        MARKDOWN
+
         expect { do_request }.to change { Message.count }.by(1)
 
         message = Message.last
@@ -189,6 +213,11 @@ RSpec.resource 'Messages' do
       end
 
       example 'Creating a message between two usernames' do
+        explanation <<-MARKDOWN
+        In cases where the user IDs are not known (such as initiating a chat), the system will automatically create a
+        user by a given username if it doesn't already exist. If a user *does* already exist by the given username, the
+        existing user record will be used.
+        MARKDOWN
         expect(User.find_by(username: 'by-tor')).to be nil
         expect(User.find_by(username: 'the_snow_dog')).to be nil
 
@@ -256,6 +285,10 @@ RSpec.resource 'Messages' do
       end
 
       example 'Attempting to create a message with invalid attributes' do
+        explanation <<-MARKDOWN
+        The API will respond with error messages and an appropraite status code in the event that there is a problem with the incoming data.
+        MARKDOWN
+
         expect { do_request }.not_to change { Message.count }
 
         expect(status).to eq 422
@@ -288,6 +321,10 @@ RSpec.resource 'Messages' do
       end
 
       example "Updating a message's \"read\" status" do
+        explanation <<-MARKDOWN
+        A message can be updated with a `read_at` value to indicate the recipient of the message has seen it.
+        MARKDOWN
+
         expect { do_request }.to change { message.reload.read_at }.from(nil).to(read_at)
 
         expect(status).to eq 200

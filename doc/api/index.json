@@ -2,7 +2,7 @@
   "resources": [
     {
       "name": "Messages",
-      "explanation": "Messages resource",
+      "explanation": "  The **Messages** resource is the primary endpoint for this application. It provides for listing messages, creating new\n  messages, and updating existing messages.\n",
       "examples": [
         {
           "description": "Listing messages for all users",
