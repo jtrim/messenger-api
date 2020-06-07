@@ -25,7 +25,7 @@ class Api::V1::BaseSerializer
 
   def as_json(*args)
     attrs = if options.key?(:include)
-              self.class._attributes & (Array(options[:include]))
+              self.class._attributes & (Array(options[:include]).map(&:to_s))
             else
               self.class._attributes
             end
