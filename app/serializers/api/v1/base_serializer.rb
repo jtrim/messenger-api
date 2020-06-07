@@ -50,7 +50,7 @@ class Api::V1::BaseSerializer
   end
 
   def resource_name
-    (self.class.resource_name ||
+    (self.class.resource_name.to_s ||
      self.class.name.demodulize.underscore.sub(/_serializer/, '')).pluralize
   end
 
