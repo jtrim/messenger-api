@@ -3,20 +3,10 @@
   "resource_explanation": "Messages resource",
   "http_method": "POST",
   "route": "/api/v1/messages",
-  "description": "- Attempting to create a message with invalid attributes",
+  "description": "Attempting to create a message with invalid attributes",
   "explanation": null,
   "parameters": [
-    {
-      "type": "hash",
-      "items": {
-        "sender_id": "string",
-        "recipient_id": "string",
-        "content": "string",
-        "sent_at": "datetime"
-      },
-      "name": "attributes",
-      "description": " attributes"
-    }
+
   ],
   "response_fields": [
 
@@ -25,7 +15,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_id\":\"aed2299e-156d-4b4a-bddf-03688bfb7d6a\",\"recipient_id\":\"70f738f5-7544-470c-93fc-bff166d346f0\"}}",
+      "request_body": "{\"attributes\":{\"sender_id\":\"ee9619c0-fb69-4245-97ba-a26e2e732f34\",\"recipient_id\":\"b8164226-63c5-4960-9429-12914409570c\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -46,8 +36,8 @@
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "dc3f39d0-1460-450c-bdef-f3d501e7965a",
-        "X-Runtime": "0.024972",
+        "X-Request-Id": "a57209cd-9076-44e3-9064-de05ff84ca9d",
+        "X-Runtime": "0.013419",
         "Content-Length": "144"
       },
       "response_content_type": "application/json; charset=utf-8",

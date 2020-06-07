@@ -14,8 +14,9 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
-    message = Message.new(message_attributes)
-    if message.save
+    ok, message = MessageService::Create.call(message_attributes)
+
+    if ok
       serializer = Api::V1::MessageSerializer.new(message)
       render json: serializer, status: :created
     else
@@ -27,7 +28,7 @@ class Api::V1::MessagesController < ApplicationController
   private
 
   def message_attributes
-    params[:attributes].permit(:content, :recipient_id, :sender_id, :sent_at)
+    params[:attributes].permit(:content, :recipient_id, :sender_id, :sent_at, :sender_username, :recipient_username)
   end
 
   def sender_id_filter

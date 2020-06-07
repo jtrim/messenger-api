@@ -3,14 +3,14 @@
   "resource_explanation": "Messages resource",
   "http_method": "POST",
   "route": "/api/v1/messages",
-  "description": "Creating a message in a conversation between two users",
+  "description": "Creating a message between two usernames",
   "explanation": null,
   "parameters": [
     {
       "type": "hash",
       "items": {
-        "sender_id": "string",
-        "recipient_id": "string",
+        "sender_username": "string",
+        "recipient_username": "string",
         "content": "string",
         "sent_at": "datetime"
       },
@@ -25,7 +25,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_id\":\"beb41266-5372-4bd6-8907-718ebab78416\",\"recipient_id\":\"0ffcf30b-72aa-442a-ba91-9bda994a1ab5\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-06T22:55:02.575-06:00\"}}",
+      "request_body": "{\"attributes\":{\"sender_username\":\"by-tor\",\"recipient_username\":\"the_snow_dog\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-06T22:55:02.607-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,7 +36,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"56fb59a1-51a2-4493-839a-71da6647bd86\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"beb41266-5372-4bd6-8907-718ebab78416\",\n        \"username\": \"user235\",\n        \"email\": \"user235@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"0ffcf30b-72aa-442a-ba91-9bda994a1ab5\",\n        \"username\": \"user236\",\n        \"email\": \"user236@example.com\"\n      },\n      \"sent_at\": \"2020-06-06T22:55:02.575-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"b2d53369-e521-427b-8a20-b26f3af1b0df\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"2fe02866-82fd-4d11-909e-21abe818ffd0\",\n        \"username\": \"by-tor\",\n        \"email\": null\n      },\n      \"recipient\": {\n        \"id\": \"b96b8c23-2b68-468f-b21f-694c796f0afb\",\n        \"username\": \"the_snow_dog\",\n        \"email\": null\n      },\n      \"sent_at\": \"2020-06-06T22:55:02.607-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -45,11 +45,11 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"75f7dd5737ee65dc64778141f318ae3a\"",
+        "ETag": "W/\"c3ca7f6d55e0597f0db3e3d6953437c4\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "975c53ee-fd35-4ce7-99a8-3dae36f0d15a",
-        "X-Runtime": "0.015829",
-        "Content-Length": "383"
+        "X-Request-Id": "e4c822d4-5a7c-4550-b7af-856d3105bb50",
+        "X-Runtime": "0.020471",
+        "Content-Length": "353"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null

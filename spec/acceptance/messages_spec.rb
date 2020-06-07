@@ -32,7 +32,7 @@ RSpec.resource 'Messages' do
 
     end
 
-    example 'Limits messages to 100', document: false do
+    example '- Limits messages to 100', document: false do
       messages = create_list(:message, 101)
 
       do_request
@@ -42,7 +42,7 @@ RSpec.resource 'Messages' do
       expect(response_json[:messages]).not_to include(a_hash_including(id: messages.first.id))
     end
 
-    example 'Limits messages to those created in the last 30 days', document: false do
+    example '- Limits messages to those created in the last 30 days', document: false do
       Timecop.freeze do
         message = create(:message, sent_at: 30.days.ago)
         create(:message, sent_at: 30.days.ago - 1.second)
@@ -55,7 +55,7 @@ RSpec.resource 'Messages' do
       end
     end
 
-    context 'when requesting messages for a specific sender' do
+    context 'When requesting messages for a specific sender' do
       parameter :filters, type: :hash, items: { sender_id: :string }
       let(:sender) { create(:user) }
 
@@ -72,7 +72,7 @@ RSpec.resource 'Messages' do
       end
     end
 
-    context 'when requesting messages for a specific recipient' do
+    context 'When requesting messages for a specific recipient' do
       parameter :filters, type: :hash, items: { recipient_id: :string }
       let(:recipient) { create(:user) }
 
@@ -89,7 +89,7 @@ RSpec.resource 'Messages' do
       end
     end
 
-    context 'when requesting messages for a specific conversation' do
+    context 'When requesting messages for a specific conversation' do
       parameter :filters, type: :hash, items: { sender_id: :string, recipient_id: :string }
       let(:recipient) { create(:user) }
       let(:sender) { create(:user) }
@@ -108,7 +108,7 @@ RSpec.resource 'Messages' do
         expect(response_json[:messages].size).to eq 3
       end
 
-      example 'Limits messages to 100', document: false do
+      example '- Limits messages to 100', document: false do
         messages = create_list(:message, 101, recipient: recipient, sender: sender)
 
         do_request(filters: { recipient_id: recipient.id, sender_id: sender.id })
@@ -118,7 +118,7 @@ RSpec.resource 'Messages' do
         expect(response_json[:messages]).not_to include a_hash_including(id: messages.first.id)
       end
 
-      example 'Limits messages to the last 30 days', document: false do
+      example '- Limits messages to the last 30 days', document: false do
         Timecop.freeze do
           message = create(:message, recipient: recipient, sender: sender, sent_at: 30.days.ago)
           create(:message, recipient: recipient, sender: sender, sent_at: 30.days.ago - 1.second)
@@ -134,8 +134,6 @@ RSpec.resource 'Messages' do
   end
 
   post '/api/v1/messages' do
-    parameter :attributes, type: :hash, items: { sender_id: :string, recipient_id: :string, content: :string, sent_at: :datetime }
-
     let(:sender) { create(:user) }
     let(:recipient) { create(:user) }
 
@@ -150,29 +148,103 @@ RSpec.resource 'Messages' do
       }.to_json
     end
 
-    example 'Creating a message in a conversation between two users' do
-      expect { do_request }.to change { Message.count }.by(1)
+    context 'When the user ids are known' do
+      parameter :attributes, type: :hash, items: { sender_id: :string, recipient_id: :string, content: :string, sent_at: :datetime }
 
-      message = Message.last
+      example 'Creating a message in a conversation between two users' do
+        expect { do_request }.to change { Message.count }.by(1)
 
-      expect(status).to eq 201
-      expect(response_json[:messages]).to match [
-                                            a_hash_including(id: message.id,
-                                                             content: message.content,
-                                                             sender: a_hash_including(
-                                                               id: message.sender.id,
-                                                               username: message.sender.username,
-                                                               email: message.sender.email),
-                                                             recipient: a_hash_including(
-                                                               id: message.recipient.id,
-                                                               username: message.recipient.username,
-                                                               email: message.recipient.email),
-                                                             sent_at: message.sent_at.as_json,
-                                                             read_at: message.read_at.as_json)]
+        message = Message.last
 
+        expect(status).to eq 201
+        expect(response_json[:messages]).to match [
+                                              a_hash_including(id: message.id,
+                                                               content: message.content,
+                                                               sender: a_hash_including(
+                                                                 id: message.sender.id,
+                                                                 username: message.sender.username,
+                                                                 email: message.sender.email),
+                                                               recipient: a_hash_including(
+                                                                 id: message.recipient.id,
+                                                                 username: message.recipient.username,
+                                                                 email: message.recipient.email),
+                                                               sent_at: message.sent_at.as_json,
+                                                               read_at: message.read_at.as_json)]
+
+      end
     end
 
-    context 'with invalid attributes' do
+    context 'When the user ids are not known' do
+      parameter :attributes, type: :hash, items: { sender_username: :string, recipient_username: :string, content: :string, sent_at: :datetime }
+
+      let(:raw_post) do
+        {
+          attributes: {
+            sender_username: 'by-tor',
+            recipient_username: 'the_snow_dog',
+            content: 'An example message between two friends',
+            sent_at: Time.now
+          }
+        }.to_json
+      end
+
+      example 'Creating a message between two usernames' do
+        expect(User.find_by(username: 'by-tor')).to be nil
+        expect(User.find_by(username: 'the_snow_dog')).to be nil
+
+        expect { do_request }.to change { Message.count }.by(1)
+
+        message = Message.last
+
+        by_tor = User.find_by(username: 'by-tor')
+        the_snow_dog = User.find_by(username: 'the_snow_dog')
+
+        expect(status).to eq 201
+        expect(response_json[:messages]).to match [
+                                              a_hash_including(id: message.id,
+                                                               content: message.content,
+                                                               sender: a_hash_including(
+                                                                 id: by_tor.id,
+                                                                 username: by_tor.username,
+                                                                 email: nil),
+                                                               recipient: a_hash_including(
+                                                                 id: the_snow_dog.id,
+                                                                 username: the_snow_dog.username,
+                                                                 email: nil),
+                                                               sent_at: message.sent_at.as_json,
+                                                               read_at: message.read_at.as_json)]
+      end
+
+      context 'When users already exist by the given usernames' do
+        specify '- It finds existing users', document: false do
+          by_tor = create(:user, username: 'by-tor')
+          the_snow_dog = create(:user, username: 'the_snow_dog')
+
+          expect do
+            expect { do_request }.to change { Message.count }.by(1)
+          end.not_to change { User.count }
+
+          message = Message.last
+
+          expect(status).to eq 201
+          expect(response_json[:messages]).to match [
+                                                a_hash_including(id: message.id,
+                                                                 content: message.content,
+                                                                 sender: a_hash_including(
+                                                                   id: by_tor.id,
+                                                                   username: by_tor.username,
+                                                                   email: by_tor.email),
+                                                                 recipient: a_hash_including(
+                                                                   id: the_snow_dog.id,
+                                                                   username: the_snow_dog.username,
+                                                                   email: the_snow_dog.email),
+                                                                 sent_at: message.sent_at.as_json,
+                                                                 read_at: message.read_at.as_json)]
+        end
+      end
+    end
+
+    context 'With invalid attributes' do
       let(:raw_post) do
         # No content or sent_at
         {
@@ -183,7 +255,7 @@ RSpec.resource 'Messages' do
         }.to_json
       end
 
-      example '- Attempting to create a message with invalid attributes' do
+      example 'Attempting to create a message with invalid attributes' do
         expect { do_request }.not_to change { Message.count }
 
         expect(status).to eq 422

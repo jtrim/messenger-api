@@ -40,8 +40,15 @@
           "method": "post"
         },
         {
-          "description": "- Attempting to create a message with invalid attributes",
-          "link": "messages/-_attempting_to_create_a_message_with_invalid_attributes.json",
+          "description": "Creating a message between two usernames",
+          "link": "messages/creating_a_message_between_two_usernames.json",
+          "groups": "all",
+          "route": "/api/v1/messages",
+          "method": "post"
+        },
+        {
+          "description": "Attempting to create a message with invalid attributes",
+          "link": "messages/attempting_to_create_a_message_with_invalid_attributes.json",
           "groups": "all",
           "route": "/api/v1/messages",
           "method": "post"
