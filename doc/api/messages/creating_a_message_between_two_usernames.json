@@ -25,7 +25,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/messages",
-      "request_body": "{\"attributes\":{\"sender_username\":\"by-tor\",\"recipient_username\":\"the_snow_dog\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T01:29:08.039-06:00\"}}",
+      "request_body": "{\"attributes\":{\"sender_username\":\"by-tor\",\"recipient_username\":\"the_snow_dog\",\"content\":\"An example message between two friends\",\"sent_at\":\"2020-06-07T01:58:49.974-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -36,7 +36,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"30ffa21f-5d35-4848-9ae5-3e0aa9c4cd6a\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"e88abafc-4b6a-437a-825a-35983257dc8e\",\n        \"username\": \"by-tor\",\n        \"email\": null\n      },\n      \"recipient\": {\n        \"id\": \"d3a2b25b-ddf8-4dd7-9057-1017fd5fc09f\",\n        \"username\": \"the_snow_dog\",\n        \"email\": null\n      },\n      \"sent_at\": \"2020-06-07T01:29:08.039-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"e8fd2d9a-dde9-4dd4-b332-8b594fa0b737\",\n      \"content\": \"An example message between two friends\",\n      \"sender\": {\n        \"id\": \"0314d915-707d-497f-a3ae-aeb4db152266\",\n        \"username\": \"by-tor\",\n        \"email\": null\n      },\n      \"recipient\": {\n        \"id\": \"f396359a-1138-4b89-9ccf-a8086f84f9b3\",\n        \"username\": \"the_snow_dog\",\n        \"email\": null\n      },\n      \"sent_at\": \"2020-06-07T01:58:49.974-06:00\",\n      \"read_at\": null\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -45,10 +45,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"2b59e812cb46cbe76890849621ddade6\"",
+        "ETag": "W/\"f3083400795bce6aad0f75c3d73d3755\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "fdc3f69e-c97c-4b06-acec-c523af6f3db6",
-        "X-Runtime": "0.082591",
+        "X-Request-Id": "f79ea8a7-1dbf-4ae7-8941-2917ea19dd3c",
+        "X-Runtime": "0.009839",
         "Content-Length": "353"
       },
       "response_content_type": "application/json; charset=utf-8",

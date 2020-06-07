@@ -40,8 +40,8 @@
           "method": "get"
         },
         {
-          "description": "↳ When the request is malformed",
-          "link": "messages/↳_when_the_request_is_malformed.json",
+          "description": "↳ When the number of supplied usernames is not exactly two",
+          "link": "messages/↳_when_the_number_of_supplied_usernames_is_not_exactly_two.json",
           "groups": "all",
           "route": "/api/v1/messages",
           "method": "get"
@@ -54,8 +54,8 @@
           "method": "get"
         },
         {
-          "description": "↳ When the request is malformed",
-          "link": "messages/↳_when_the_request_is_malformed.json",
+          "description": "↳ When the number of supplied user ids is not exactly two",
+          "link": "messages/↳_when_the_number_of_supplied_user_ids_is_not_exactly_two.json",
           "groups": "all",
           "route": "/api/v1/messages",
           "method": "get"

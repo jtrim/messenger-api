@@ -176,7 +176,7 @@ RSpec.resource 'Messages' do
         expect(response_json[:messages].size).to eq 6
       end
 
-      example '↳ When the request is malformed' do
+      example '↳ When the number of supplied usernames is not exactly two' do
         do_request(filters: { between_usernames: ['foo', 'bar', 'baz'] })
         expect(status).to eq 422
         expect(response_json).to match(
@@ -214,7 +214,7 @@ RSpec.resource 'Messages' do
         expect(response_json[:messages].size).to eq 6
       end
 
-      example '↳ When the request is malformed' do
+      example '↳ When the number of supplied user ids is not exactly two' do
         do_request(filters: { between_user_ids: [1, 2, 3] })
         expect(status).to eq 422
         expect(response_json).to match(

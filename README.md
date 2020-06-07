@@ -4,11 +4,19 @@
 
 This application is a simple messenger API that allows logging messages between two users of the system.
 
-[You can find this application deployed to Heroku](https://jtrim-messenger-api.herokuapp.com/api/docs) if you would prefer to interact with a web-accessible version of the application.
+[You can find this application deployed to Heroku](https://jtrim-messenger-api.herokuapp.com/api/docs) if you would
+prefer to interact with a web-accessible version of the application.
 
 See below for setup instructions.
 
 # Notes
+
+To save on time, my approach to building and testing this application was to focus on having a robust acceptance test
+suite for the messages endopint and forgoing tests on everything else. In a real world scenario, I would have unit tests
+in place for anything non-trivial.
+
+The messages endpoint has a few extra features that weren't requested by the requirements document but that I thought
+might be useful and were easy additions.
 
 This application is housed within a standard Rails application. You'll see some config files around that might not make sense
 since this is an API application (i.e. yarn.lock, babel.config.js, node_modules, etc), but I left them in place just in
@@ -21,7 +29,8 @@ All notable code files are under `app`, and everything else is configuration or 
     - The handler for the /api/v1/messages endpoint
 - app/models
   - **message.rb**
-    - Query methods, validations, and relation configuration for the Message model
+    - Query methods, validations, and relation configuration for the Message model. I would generally cover the
+      non-trivial scopes with unit tests.
   - user.rb
     - Validations and relation configuration for the User model
 - app/serializers
@@ -31,7 +40,8 @@ All notable code files are under `app`, and everything else is configuration or 
       APIs (notably, the `:include` option, which can help with performance by reducing payload size).
 
       As an aside, I think this file has the most room for improvement. It's doing some clever things, isn't the most
-      readable, and it has no unit tests.
+      readable, and despite being of critical importance to the entire API, it has no unit tests. This file poses the
+      highest risk to change, so this would be the first place I would start with backfilling tests.
   - **message_serializer.rb**
     - The serializer responsible for building the JSON payload for the messages API.
   - user_serializer.rb
@@ -41,7 +51,7 @@ All notable code files are under `app`, and everything else is configuration or 
 - app/services
   - **message_service/create.rb**
     - Responsible for creating messages, and will also create the sender and recipient by username if they don't already
-      exist in the system.
+      exist in the system. I generally cover service objects pretty thoroughly with unit tests.
 
       As an aside, I'm a big fan of service objects (aka use-case objects, domain objects, actors, interactors,
       etc) when an atomic operation has more than one step.
@@ -54,6 +64,8 @@ Not used (but left in place just in case):
 - app/jobs
 - app/mailers
 - app/views
+
+This project is set up on CircleCI and is automatically deployed to Heroku on a green build of the master branch.
 
 # Setup
 

@@ -21,8 +21,8 @@
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/messages/00e179f7-6c81-40a5-b5f6-609076145083",
-      "request_body": "{\"attributes\":{\"read_at\":\"2020-06-07T01:29:08.000-06:00\"}}",
+      "request_path": "/api/v1/messages/74830a59-4eda-4eb4-bf48-fc89eb65041b",
+      "request_body": "{\"attributes\":{\"read_at\":\"2020-06-07T01:58:50.000-06:00\"}}",
       "request_headers": {
         "Content-Type": "application/json",
         "Host": "example.org",
@@ -33,7 +33,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"00e179f7-6c81-40a5-b5f6-609076145083\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"afa258b4-86c4-46c5-b79a-3c1fb0a246fd\",\n        \"username\": \"user251\",\n        \"email\": \"user253@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"17cfc1bf-ce67-43e1-9cf9-118f5311d701\",\n        \"username\": \"user252\",\n        \"email\": \"user254@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T01:29:08.299-06:00\",\n      \"read_at\": \"2020-06-07T01:29:08.000-06:00\"\n    }\n  ]\n}",
+      "response_body": "{\n  \"messages\": [\n    {\n      \"id\": \"74830a59-4eda-4eb4-bf48-fc89eb65041b\",\n      \"content\": \"Message content\",\n      \"sender\": {\n        \"id\": \"792d506d-4ea8-4cab-ae83-a1ffeb84734c\",\n        \"username\": \"user251\",\n        \"email\": \"user253@example.com\"\n      },\n      \"recipient\": {\n        \"id\": \"3b46e4b1-e819-4535-a69f-78e87f0617b6\",\n        \"username\": \"user252\",\n        \"email\": \"user254@example.com\"\n      },\n      \"sent_at\": \"2020-06-07T01:58:50.148-06:00\",\n      \"read_at\": \"2020-06-07T01:58:50.000-06:00\"\n    }\n  ]\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -42,10 +42,10 @@
         "X-Permitted-Cross-Domain-Policies": "none",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"ad9010a7b84e24e44f0638d4cdf4b385\"",
+        "ETag": "W/\"1f514b005b830220c8f9dbaace6a312c\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "0f66ff63-9b8f-4ec4-b5bf-a21edf5f18ac",
-        "X-Runtime": "0.020774",
+        "X-Request-Id": "985495e7-16cd-4548-af4f-3318f604db0d",
+        "X-Runtime": "0.021484",
         "Content-Length": "387"
       },
       "response_content_type": "application/json; charset=utf-8",

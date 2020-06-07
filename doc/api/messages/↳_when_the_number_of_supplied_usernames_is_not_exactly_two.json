@@ -3,13 +3,13 @@
   "resource_explanation": "  The **Messages** resource is the primary endpoint for this application. It provides for listing messages, creating new\n  messages, and updating existing messages.\n",
   "http_method": "GET",
   "route": "/api/v1/messages",
-  "description": "↳ When the request is malformed",
+  "description": "↳ When the number of supplied usernames is not exactly two",
   "explanation": null,
   "parameters": [
     {
       "type": "array",
-      "name": "filters[between_user_ids]",
-      "description": "Two user ids"
+      "name": "filters[between_usernames]",
+      "description": "Two usernames"
     }
   ],
   "response_fields": [
@@ -18,7 +18,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/messages?filters[between_user_ids][]=1&filters[between_user_ids][]=2&filters[between_user_ids][]=3",
+      "request_path": "/api/v1/messages?filters[between_usernames][]=foo&filters[between_usernames][]=bar&filters[between_usernames][]=baz",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -27,17 +27,17 @@
       },
       "request_query_parameters": {
         "filters": {
-          "between_user_ids": [
-            "1",
-            "2",
-            "3"
+          "between_usernames": [
+            "foo",
+            "bar",
+            "baz"
           ]
         }
       },
       "request_content_type": "application/json",
       "response_status": 422,
       "response_status_text": "Unprocessable Entity",
-      "response_body": "{\n  \"errors\": {\n    \"messages\": [\n      \"Between user ids must contain exactly two values\"\n    ],\n    \"attributes\": {\n      \"between_user_ids\": [\n        \"must contain exactly two values\"\n      ]\n    }\n  }\n}",
+      "response_body": "{\n  \"errors\": {\n    \"messages\": [\n      \"Between usernames must contain exactly two values\"\n    ],\n    \"attributes\": {\n      \"between_usernames\": [\n        \"must contain exactly two values\"\n      ]\n    }\n  }\n}",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -47,9 +47,9 @@
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "3993ce6a-a5e8-4754-9cbc-43a2c8fbe052",
-        "X-Runtime": "0.011264",
-        "Content-Length": "146"
+        "X-Request-Id": "a5d3713a-52cb-48fe-b49f-cd94e0060d5c",
+        "X-Runtime": "0.004934",
+        "Content-Length": "148"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": null
