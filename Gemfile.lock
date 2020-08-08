@@ -94,7 +94,7 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
-    kramdown (2.2.1)
+    kramdown (2.3.0)
       rexml
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
